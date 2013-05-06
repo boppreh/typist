@@ -2,7 +2,7 @@
 ## Eclipse
 #################
 
-keys.txt
+data/
 
 *.pydevproject
 .project
