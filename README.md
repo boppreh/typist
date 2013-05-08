@@ -1,12 +1,12 @@
 typist
 ======
 
-_This is just a mock README. The project isn't ready yet,
-this description is just to have a clear picture of the goals._
+**typist** is a background application that records all keyboard
+events with millisecond timestamps. Events are saved in text files
+for each date with an easy to parse format.
 
-**typist** is a background application that records your keypresses
-to gather statistics like WPM and common mistakes. To avoid recording
-sensitive information, such as passwords, *typist* can keep a list
-of hashes of banned words.
-
-All interaction is done through the right-click menu on the tray icon.
+The future goal of this application is to gather typing statistics
+(Words Per Minute, total finger movement, number of mistakes) and 
+insert artifical key events to fix typos. Another important future
+feature is to avoid recording senstivei informatino, such as passwords,
+by keeping a list of hashed banned words.
