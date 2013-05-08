@@ -3,7 +3,7 @@ from datetime import date
 from background import tray
 import keyboard
 
-event_template = u'{time} {event_type} {key_code}'
+event_template = u'{time} - {event_type} - {key_code}'
 location_template = 'data/{iso_date}.txt'
 if not os.path.exists('data/'):
     os.mkdir('data/')
