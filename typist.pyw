@@ -5,7 +5,7 @@ from Queue import Queue
 from background import tray
 import keyboard
 
-event_template = u'{time} - {event_type} - {key_code}'
+event_template = u'{time} - {event_type} - {keycode}'
 location_template = 'data/{iso_date}.txt'
 if not os.path.exists('data/'):
     os.mkdir('data/')
@@ -32,7 +32,6 @@ def keyboard_event_writer():
             path = location_template.format(iso_date=date.today())
             with open(path, 'a') as keys_file:
                 keys_file.write(event_text + '\n')
-            print events.qsize()
         except Exception as e:
             # In case of error, print and continue. We don't want the logging
             # to stop permanently because of some temporary error.
