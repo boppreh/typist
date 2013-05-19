@@ -37,7 +37,7 @@ def mistakes(key_codes):
     """
     typing_codes = (code for code in key_codes if 31 < code < 127 or code == 8)
     typed_words = groups(typing_codes)
-    has_mistakes = lambda w: 1 <= w.count(chr(8)) < len(map(str.isalpha, w)) - 3
+    has_mistakes = lambda w: 1 <= w.count(chr(8)) < w.index(chr(8))
     return filter(has_mistakes, typed_words)
 
 
