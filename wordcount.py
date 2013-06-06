@@ -22,7 +22,7 @@ def groups(key_codes):
     Converts `key_codes` to characters and groups them based on spacing.
     """
     text = ''.join(map(chr, key_codes)).lower()
-    return filter(lambda c: 1 < len(c) < 20, text.split())
+    return filter(lambda c: 3 <= len(c) < 20, text.split())
 
 def words(key_codes):
     """
