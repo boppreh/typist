@@ -3,6 +3,7 @@ from datetime import date
 from threading import Thread
 from Queue import Queue
 from background import tray
+from simpleserver import serve
 import keyboard
 
 event_template = u'{time} - {event_type} - {keycode}'
@@ -38,5 +39,6 @@ def keyboard_event_writer():
             print e
 
 tray('Typist', 'typist.ico')
+serve({}, port=2341)
 keyboard.add_handler(keyboard_event_handler)
 Thread(target=keyboard_event_writer).start()
