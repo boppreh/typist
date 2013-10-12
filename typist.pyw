@@ -21,6 +21,7 @@ if not os.path.exists('data/'):
 # Without multiple threads it would have slowed the typing significantly.
 
 events = Queue()
+service = {'typed': ''}
 
 def keyboard_event_handler(event):
     events.put(event)
@@ -33,12 +34,15 @@ def keyboard_event_writer():
             path = location_template.format(iso_date=date.today())
             with open(path, 'a') as keys_file:
                 keys_file.write(event_text + '\n')
+
+            if event.char and event.event_type == 'key down':
+                service['typed'] = (service['typed'] + event.char)[-100:]
         except Exception as e:
             # In case of error, print and continue. We don't want the logging
             # to stop permanently because of some temporary error.
             print e
 
 tray('Typist', 'typist.ico')
-serve({}, port=2341)
+serve(service, port=2341)
 keyboard.add_handler(keyboard_event_handler)
 Thread(target=keyboard_event_writer).start()
