@@ -1,8 +1,11 @@
+try:
+    from Queue import Queue
+except:
+    from queue import Queue
 import os
 from datetime import date
 from threading import Thread
-from Queue import Queue
-from background import tray
+from tray import tray
 from simpleserver import serve
 import keyboard
 
@@ -32,6 +35,7 @@ def keyboard_event_writer():
             event = events.get()
             event_text = event_template.format(**event.__dict__)
             path = location_template.format(iso_date=date.today())
+            
             with open(path, 'a') as keys_file:
                 keys_file.write(event_text + '\n')
 
@@ -40,7 +44,7 @@ def keyboard_event_writer():
         except Exception as e:
             # In case of error, print and continue. We don't want the logging
             # to stop permanently because of some temporary error.
-            print e
+            print(e)
 
 tray('Typist', 'typist.ico')
 serve(service, port=2341)
