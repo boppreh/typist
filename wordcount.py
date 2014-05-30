@@ -8,7 +8,7 @@ def all_typed():
     lines = []
     all_dates = os.listdir('data/')
     for i, date in enumerate(all_dates):
-        print 'Reading {} ({}/{})'.format(date, i + 1, len(all_dates))
+        print('Reading {} ({}/{})'.format(date, i + 1, len(all_dates)))
         with open('data/' + date) as date_file:
             lines.extend(date_file.read().split('\n'))
 
@@ -44,16 +44,16 @@ def mistakes(key_codes):
 if __name__ == '__main__':
     key_codes = all_typed()
 
-    print '---\n'
+    print('---\n')
 
-    print 'Most common words:\n'
+    print('Most common words:\n')
     for word, count in Counter(words(key_codes)).most_common(20):
-        print word, count
+        print(word, count)
 
-    print '---\n'
+    print('---\n')
 
-    print 'Most common mistakes:\n'
+    print('Most common mistakes:\n')
     for word, count in Counter(mistakes(key_codes)).most_common(20):
-        print '{} ({}) {}'.format(word, word.replace(chr(8), '!'), count)
+        print('{} ({}) {}'.format(word, word.replace(chr(8), '!'), count))
 
     raw_input()
